@@ -27,6 +27,7 @@ export class CLI {
     this.rl.question("Escolha uma opção: ", this.handleMenuChoice.bind(this));
   }
 
+  // Trata a escolha do usuário no menu
   handleMenuChoice(choice) {
     switch (choice) {
       case "1":
@@ -98,6 +99,7 @@ export class CLI {
     this.exibirMenu();
   }
 
+  // Realiza a busca de contatos com base no critério selecionado
   buscarContatos() {
     this.rl.question(
       "Escolha o tipo de busca (1-Nome, 2-Telefone, 3-Email): ",

@@ -1,3 +1,4 @@
+// Representa um contato individual com nome, telefone e email
 export class Contato {
   constructor(nome, telefone, email) {
     this.nome = nome;
@@ -10,6 +11,8 @@ export class Contato {
   }
 }
 
+// Classe base para todos os componentes de contato (individuais ou grupos).
+// Implementa os métodos adicionar, remover, buscar e listar que serão sobrescritos nas subclasses
 export class ComponenteContato {
   adicionar(contato) {}
   remover(contato) {}
@@ -17,12 +20,14 @@ export class ComponenteContato {
   listar() {}
 }
 
+// Representa um contato único. Implementa os métodos de busca e listagem de forma específica para um contato individual
 export class ContatoIndividual extends ComponenteContato {
   constructor(contato) {
     super();
     this.contato = contato;
   }
 
+  // Busca o contato individual com base no critério fornecido
   buscar(criterio) {
     return criterio(this.contato) ? [this.contato] : [];
   }
@@ -32,6 +37,7 @@ export class ContatoIndividual extends ComponenteContato {
   }
 }
 
+// Representa um grupo de contatos. Pode conter outros contatos ou grupos e implementa métodos de busca e listagem recursivos
 export class GrupoContatos extends ComponenteContato {
   constructor() {
     super();
@@ -49,10 +55,12 @@ export class GrupoContatos extends ComponenteContato {
     }
   }
 
+  // Aplica o critério de busca a todos os contatos no grupo, incluindo contatos dentro de grupos
   buscar(criterio) {
     return this.contatos.flatMap((contato) => contato.buscar(criterio));
   }
 
+  // Retorna todos os contatos no grupo, incluindo contatos dentro de grupos
   listar() {
     return this.contatos.flatMap((contato) => contato.listar());
   }

@@ -7,6 +7,7 @@ export class GerenciadorContatos {
     this.estrategiaBusca = new BuscaPorNome();
   }
 
+  // Permite alterar a estratégia de busca em tempo de execução
   setEstrategiaBusca(estrategia) {
     this.estrategiaBusca = estrategia;
   }
@@ -19,11 +20,14 @@ export class GerenciadorContatos {
     this.raiz.remover(contato);
   }
 
+  // Retorna todos os contatos do grupo
   listar() {
     return this.raiz.listar();
   }
 
+  // Realiza a busca de contatos de acordo com o termo e a estratégia de busca
   buscar(termo) {
+    // Filtra os contatos usando a estratégia de busca configurada
     return this.raiz.buscar((contato) =>
       this.estrategiaBusca.execute(contato, termo)
     );
