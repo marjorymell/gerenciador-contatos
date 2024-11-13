@@ -1,5 +1,5 @@
-import { GrupoContatos, ContatoIndividual } from "./models.js";
-import { BuscaPorNome } from "./strategies.js";
+import { GrupoContatos, ContatoIndividual } from "./models/models.js";
+import { BuscaPorNome } from "./strategies/strategies.js";
 
 export class GerenciadorContatos {
   constructor() {
